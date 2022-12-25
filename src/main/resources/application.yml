@@ -1,8 +1,13 @@
+# для запуска из терминала Идеи создаем jar командой " ./mvnw spring-boot:build-image " или " mvn clean package "
+# затем из папки с jar файлом выполняем команду
+# java -jar -Dspring.profiles.active=england eureka-server-0.2.jar
+# java -jar -Dspring.profiles.active=australia eureka-server-0.1.jar
+# при создании двух образов надо поменять номер snapshot
+
 spring:
   config:
     activate:
       on-profile: default
-#  profiles: default
   application:
     name: eureka-server
 
@@ -23,16 +28,10 @@ eureka:
     hostname: eureka-server.com
 
 ---
-# для запуска из терминала Идеи создаем jar командой " ./mvnw spring-boot:build-image " или " mvn clean package "
-# затем из папки с jar файлом выполняем команду
-# java -jar -Dspring.profiles.active=england eureka-server-0.2.jar
-# java -jar -Dspring.profiles.active=australia eureka-server-0.1.jar
-# при создании двух образов надо поменять номер snapshot
 spring:
   config:
     activate:
       on-profile: australia
-#  profiles: australia
   application:
     name: eureka-server-clustered
 server:
@@ -44,19 +43,14 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-server.com:8761/eureka/
+      defaultZone: http://eureka-server-en.com:9002/eureka/
 
 ---
-# для запуска из терминала Идеи создаем jar командой " ./mvnw spring-boot:build-image " или " mvn clean package "
-# затем из папки с jar файлом выполняем команду
-# java -jar -Dspring.profiles.active=england eureka-server-0.2.jar
-# java -jar -Dspring.profiles.active=australia eureka-server-0.1.jar
-# при создании двух образов надо поменять номер snapshot
+
 spring:
   config:
     activate:
       on-profile: england
-#  profiles: england
   application:
     name: eureka-server-clustered
 server:
@@ -68,4 +62,4 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-server.com:8761/eureka/
+      defaultZone: http://eureka-server-au.com:9001/eureka/
