@@ -20,7 +20,8 @@ eureka:
     fetch-registry: false
     instance-info-replication-interval-seconds: 10
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://eureka-server-au.com:9001/eureka/, http://eureka-server-en.com:9002/eureka/
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   server:
     eviction-interval-timer-in-ms: 50000
     wait-time-in-ms-when-sync-empty: 5
@@ -43,7 +44,8 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-server-en.com:9002/eureka/
+      defaultZone: http://eureka-server-en.com:9002/eureka/, http://eureka-server.com:8761/eureka/
+#      defaultZone: http://eureka-server-en.com:9002/eureka/
 
 ---
 
@@ -62,4 +64,5 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-server-au.com:9001/eureka/
+      defaultZone: http://eureka-server-au.com:9001/eureka/, http://eureka-server.com:8761/eureka/
+#      defaultZone: http://eureka-server-au.com:9001/eureka/
